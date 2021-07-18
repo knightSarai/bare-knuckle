@@ -1,0 +1,1 @@
+const API_URL = process.env.NEXT_PUPLIC_API || 'http://localhost:3000'

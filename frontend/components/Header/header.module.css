@@ -1,0 +1,60 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  color: #333;
+  height: 80px;
+  padding: 0 30px;
+  box-shadow: 0 5px 5px rgba(237, 82, 73, 0.4);
+}
+
+.header a {
+  color: #fafafa;
+  margin-right: 20px;
+  font-family: 'Metal Mania', cursive;
+  font-size: 25px;
+  letter-spacing: 2.5 px;
+}
+
+.header a:hover {
+  color: var(--primary-color);
+}
+
+.header ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.logo {
+  color: var(--primary-color);
+}
+
+.logo a {
+  color: var(--primary-color);
+  font-size: 40px;
+  letter-spacing: 3.5px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .header ul {
+    margin: 20px 0;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header a {
+    margin-right: 0;
+  }
+
+  .logo {
+    margin: 20px 0;
+  }
+}

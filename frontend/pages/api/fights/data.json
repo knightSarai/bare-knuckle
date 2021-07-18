@@ -1,0 +1,52 @@
+{
+    "fights" : [
+        {
+            "id": "1",
+            "name": "Knight Sarai Comming back",
+            "slug": "knight-sarai-comming-back",
+            "venue": "Madison square gardenason ",
+            "address": "4 Pennsylvania Plaza, New York, NY 10001, United",
+            "fighters": ["knight sarai", "ward knight"],
+            "date": "Augest 09, 2021",
+            "time": "10:00 PM UTC",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae saepe voluptatum itaque dolorem minus dignissimos assumenda sunt repellendus fugit.",
+            "image": "/images/fight1.jpg"
+        },
+        {
+            "id": "2",
+            "name": "Ali gloves for the win",
+            "slug": "ali-gloves-for-the-win",
+            "venue": "Friday Market",
+            "address": "Ali Ben Abi Taleb st, Amman, Jordan",
+            "fighters": ["Anas Dan", "Rashed haf"],
+            "date": "Septemper 15, 2021",
+            "time": "01:00 AM UTC",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae saepe voluptatum itaque dolorem minus dignissimos assumenda sunt repellendus fugit.",
+            "image": "/images/fight2.jpg"
+        },
+        {
+            "id": "3",
+            "name": "Lagacy restored",
+            "slug": "lagacy-restored",
+            "venue": "Rainbow Theater ",
+            "address": "Al Rainbow St 47, Amman, Jordan",
+            "fighters": ["Sugar ray robinson", "Jake lamotta"],
+            "date": "October 05, 2021",
+            "time": "12:30 AM UTC",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae saepe voluptatum itaque dolorem minus dignissimos assumenda sunt repellendus fugit.",
+            "image": "/images/fight3.jpg"
+        },
+        {
+            "id": "4",
+            "name": "The Norceman",
+            "slug": "the-norceman",
+            "venue": "Sport City",
+            "address": "Q. Aliaa St. 19, Amman",
+            "fighters": ["Brain Neilsen", "Floyd mayweather"],
+            "date": "Decmeber 25, 2021",
+            "time": "2:30 AM UTC",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum beatae saepe voluptatum itaque dolorem minus dignissimos assumenda sunt repellendus fugit.",
+            "image": "/images/fight4.jpg"
+        }
+    ]
+}
