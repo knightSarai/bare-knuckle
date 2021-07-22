@@ -5,6 +5,8 @@
   --primary-color: #ed5249;
   --bg-primary: #474747;
   --secondary-color: #000;
+  --warning-color: #d9751f;
+  --info-color: #854fad;
 }
 
 * {
