@@ -1,1 +1,1 @@
-const API_URL = process.env.NEXT_PUPLIC_API || 'http://localhost:3000'
+export const API_URL = process.env.NEXT_PUPLIC_API_URL || 'http://localhost:3000'
