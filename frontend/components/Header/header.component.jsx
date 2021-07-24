@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Search from '../Search/';
 import styles from './header.module.css';
 
 export default function Header() {
@@ -9,6 +10,7 @@ export default function Header() {
                     <a>Bare Knuckle</a>
                 </Link>
             </div>
+            <Search />
             <nav>
                 <ul>
                     <li>
@@ -18,6 +20,6 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-        </header>
+        </header >
     )
 }

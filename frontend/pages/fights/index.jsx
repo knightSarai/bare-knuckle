@@ -12,7 +12,7 @@ export default function HomePage({ fights }) {
 }
 
 export async function getServerSideProps() {
-    const res = await fetch(`${API_URL}/api/fights`);
+    const res = await fetch(`${API_URL}/fights?_sort=date:ASC`);
     const fights = await res.json();
     return {
         props: { fights },

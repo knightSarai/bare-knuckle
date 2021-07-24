@@ -26,12 +26,12 @@ export default function FightPage({ fight }) {
                     </a>
                 </div>
                 <span >
-                    {fight.date} at {fight.time}
+                    {new Date(fight.date).toLocaleDateString('en-JO')} at {fight.time}
                 </span>
                 <h1>{fight.name}</h1>
                 {fight.image && (
                     <div className={styles.image}>
-                        <Image src={fight.image} width={960} height={600} />
+                        <Image src={fight.image.formats.medium.url} width={960} height={600} />
                     </div>
                 )}
                 <h3>Fighters:</h3>
@@ -52,7 +52,7 @@ export default function FightPage({ fight }) {
 }
 
 export async function getServerSideProps({ query: { slug } }) {
-    const res = await fetch(`${API_URL}/api/fights/${slug}`);
+    const res = await fetch(`${API_URL}/fights?slug=${slug}`);
     const fights = await res.json();
     return {
         props: {
