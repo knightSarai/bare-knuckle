@@ -2,6 +2,7 @@ import Layout from "@/components/layout";
 import Fight from "@/components/FightItem";
 import { API_URL } from "@/config/index";
 import Link from "next/link";
+
 export default function HomePage({ fights }) {
   return (
     <Layout >
@@ -18,9 +19,9 @@ export default function HomePage({ fights }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${API_URL}/api/fights`);
+  const res = await fetch(`${API_URL}/fights?_sort=date:ASC&_limit=3`);
   const fights = await res.json();
   return {
-    props: { fights: fights.slice(0, 3) },
+    props: { fights },
   }
 }

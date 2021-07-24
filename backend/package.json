@@ -9,7 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "knex": "0.21.18",
     "sqlite3": "5.0.0",
@@ -22,6 +21,7 @@
     "strapi-plugin-i18n": "3.6.5",
     "strapi-plugin-upload": "3.6.5",
     "strapi-plugin-users-permissions": "3.6.5",
+    "strapi-provider-upload-cloudinary": "^3.6.5",
     "strapi-utils": "3.6.5"
   },
   "author": {
