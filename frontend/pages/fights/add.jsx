@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import Layout from "@/components/layout";
 import { API_URL } from '@/config/index'
 import styles from '@/styles/fightForm.module.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AddFightPage({ token }) {
     const [values, setValues] = useState({
@@ -27,7 +27,7 @@ export default function AddFightPage({ token }) {
         const hasEmptyFields = Object.values(values).some(element => element === '')
 
         if (hasEmptyFields) {
-            toast.error('Please fill in all fields')
+            return toast.error('Please fill in all fields')
         }
 
         const res = await fetch(`${API_URL}/fights`, {
