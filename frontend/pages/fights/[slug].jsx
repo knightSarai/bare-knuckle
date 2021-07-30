@@ -1,13 +1,29 @@
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { ToastContainer, toast } from 'react-toastify'
 import Layout from "@/components/layout/layout.component";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/fight.module.css"
 
-const deleteFight = (evt) => alert("fight deleted")
+import 'react-toastify/dist/ReactToastify.css'
+import router from "next/router";
 
 export default function FightPage({ fight }) {
+    const deleteFight = async evt => {
+        if (confirm(`${fight.name} will be deleted, Are you sure?`)) {
+            const res = await fetch(
+                `${API_URL}/fights/${fight.id}`,
+                { method: 'DELETE' }
+            )
+
+            const data = await res.json()
+
+            if (!res.ok) return toast.error(data.message);
+            return router.push('/fights')
+
+        }
+    }
     return (
         <Layout>
             <div className={styles.fight}>
@@ -29,6 +45,7 @@ export default function FightPage({ fight }) {
                     {new Date(fight.date).toLocaleDateString('en-JO')} at {fight.time}
                 </span>
                 <h1>{fight.name}</h1>
+                <ToastContainer />
                 {fight.image && (
                     <div className={styles.image}>
                         <Image src={fight.image.formats.medium.url} width={960} height={600} />
