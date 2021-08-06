@@ -23,7 +23,7 @@ export default function FightPage({ fights, pagination }) {
 }
 
 export async function getServerSideProps({ query: { page = 1 } }) {
-    const PER_PAGE = 2
+    const PER_PAGE = 4
     const start = +page === 1 ? 0 : (+page - 1) * PER_PAGE
     const res = await fetch(`${API_URL}/fights?_sort=date:ASC&_limit=${PER_PAGE}&_start=${start}`);
     const fights = await res.json();

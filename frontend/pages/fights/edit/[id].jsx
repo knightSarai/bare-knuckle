@@ -73,7 +73,7 @@ export default function EditFightPage({ fight }) {
 
     return (
         <Layout title='Add New Fight'>
-            <Link href='/Fights'>Go Back</Link>
+            <Link href={`/fights/${fight.slug}`}>Go Back</Link>
             <h1 className={styles.formTitle}>Add Fight</h1>
             <ToastContainer />
             <form onSubmit={handleSubmit} className={styles.form}>

@@ -38,6 +38,10 @@
   letter-spacing: 3.5px;
 }
 
+a.smallFont {
+  font-size: 20px;
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
