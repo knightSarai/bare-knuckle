@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/fights/me",
+      "handler": "fights.me",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/fights/count",
       "handler": "fights.count",
       "config": {

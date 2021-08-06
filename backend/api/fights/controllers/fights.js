@@ -1,8 +1,28 @@
 'use strict';
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
+const { sanitizeEntity } = require('strapi-utils')
 
-module.exports = {};
+module.exports = {
+    async me(context) {
+        const { user } = context.state;
+
+        if (!user)
+            return context.badRequest(
+                null,
+                [
+                    {
+                        messages: [{ id: "No autorization header was found" }]
+                    }
+                ]
+            )
+
+        const data = await strapi.services.fights.find({ user: user.id })
+        if (!data) return context.notFound();
+
+        return sanitizeEntity(
+            data,
+            { model: strapi.models.fights }
+        )
+
+    }
+}
