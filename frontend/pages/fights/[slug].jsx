@@ -5,16 +5,19 @@ import { ToastContainer, toast } from 'react-toastify'
 import Layout from "@/components/layout/layout.component";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/fight.module.css"
-
+import cookieParser from '@/helpers/cookieParser';
 import 'react-toastify/dist/ReactToastify.css'
 import router from "next/router";
 
-export default function FightPage({ fight }) {
+export default function FightPage({ fight, token }) {
     const deleteFight = async evt => {
         if (confirm(`${fight.name} will be deleted, Are you sure?`)) {
-            const res = await fetch(
-                `${API_URL}/fights/${fight.id}`,
-                { method: 'DELETE' }
+            const res = await fetch(`${API_URL}/fights/${fight.id}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }
             )
 
             const data = await res.json()
@@ -68,12 +71,14 @@ export default function FightPage({ fight }) {
     )
 }
 
-export async function getServerSideProps({ query: { slug } }) {
+export async function getServerSideProps({ req, query: { slug } }) {
+    const { token } = cookieParser(req);
     const res = await fetch(`${API_URL}/fights?slug=${slug}`);
     const fights = await res.json();
     return {
         props: {
-            fight: fights[0]
+            fight: fights[0],
+            token
         }
     }
 }

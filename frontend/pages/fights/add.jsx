@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
 import Layout from "@/components/layout";
 import { API_URL } from '@/config/index'
+import cookieParser from '@/helpers/cookieParser';
 import styles from '@/styles/fightForm.module.css'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -18,7 +19,7 @@ export default function AddFightPage({ token }) {
         description: '',
     })
 
-    const router = useRouter()
+    const router = useRouter();
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -34,7 +35,7 @@ export default function AddFightPage({ token }) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(values),
         })
@@ -142,12 +143,12 @@ export default function AddFightPage({ token }) {
     )
 }
 
-// export async function getServerSideProps({ req }) {
-//     const { token } = parseCookies(req)
+export async function getServerSideProps({ req }) {
+    const { token } = cookieParser(req);
 
-//     return {
-//         props: {
-//             token,
-//         },
-//     }
-// }
+    return {
+        props: {
+            token,
+        },
+    }
+}
