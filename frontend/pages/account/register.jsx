@@ -5,13 +5,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from '@/components/layout/';
+import AuthContext from '@/context/AuthContext';
 import styles from '@/styles/authForm.module.css';
 
 export default function RegisterPage() {
-    const [username, setUsernamel] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+
+    const { register, error } = useContext(AuthContext)
+
+    useEffect(() => error && toast.error(error), [error])
 
     const handleSubmit = evt => {
         evt.preventDefault();
@@ -21,14 +26,14 @@ export default function RegisterPage() {
             return
         }
 
-        console.log({ username, email, password });
+        register({ username, email, password })
     }
 
     return (
         <Layout title='User Registration'>
             <div className={styles.auth}>
                 <h1>
-                    <FaUser /> Log In
+                    <FaUser /> Register
                 </h1>
                 <ToastContainer />
                 <form onSubmit={handleSubmit}>
