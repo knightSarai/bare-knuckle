@@ -3,7 +3,7 @@ import { API_URL } from '@/config/index';
 import styles from './imageUploadModal.module.css'
 import FormatDate from 'helpers/dateFormatter';
 
-export default function imageUploadModal({ fightId, imageUploaded }) {
+export default function imageUploadModal({ fightId, imageUploaded, token }) {
 
     const [image, setImage] = useState(null)
 
@@ -17,6 +17,9 @@ export default function imageUploadModal({ fightId, imageUploaded }) {
 
         const res = await fetch(`${API_URL}/upload`, {
             method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
             body: formData
         })
 

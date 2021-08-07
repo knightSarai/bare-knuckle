@@ -9,10 +9,11 @@ import Layout from "@/components/layout";
 import Modal from "@/components/Modal";
 import ImageUploadModal from "@/components/ImageUploadModal";
 import { API_URL } from '@/config/index';
+import cookieParser from '@/helpers/cookieParser';
 import styles from '@/styles/fightForm.module.css';
 import FormatDate from '@/helpers/dateFormatter';
 
-export default function EditFightPage({ fight }) {
+export default function EditFightPage({ fight, token }) {
     const [values, setValues] = useState({
         name: fight.name,
         fighters: fight.fighters,
@@ -42,7 +43,7 @@ export default function EditFightPage({ fight }) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                // Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(values),
         })
@@ -173,18 +174,21 @@ export default function EditFightPage({ fight }) {
                 <ImageUploadModal
                     fightId={fight.id}
                     imageUploaded={imageUploaded}
+                    token={token}
                 />
             </Modal>
         </Layout>
     )
 }
 
-export async function getServerSideProps({ params: { id } }) {
+export async function getServerSideProps({ req, params: { id } }) {
+    const { token } = cookieParser(req);
     const res = await fetch(`${API_URL}/fights/${id}`);
     const fight = await res.json();
     return {
         props: {
-            fight
+            fight,
+            token
         },
     }
 }
